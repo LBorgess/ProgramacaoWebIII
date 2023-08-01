@@ -1,7 +1,8 @@
 <?php
 
     // Criando uma conexão com o banco de dados
-    $con = mysqli_connect("localhost", "etec", "123456", "db_exemplo");
+    // $con = mysqli_connect("localhost", "etec", "123456", "db_exemplo");
+    $con = mysqli_connect("localhost", "root");
 
     if(mysqli_connect_errno()){
         echo "Erro ao conectar com  base de dados: " . mysqli_connect_error();
