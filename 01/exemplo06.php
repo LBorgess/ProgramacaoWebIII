@@ -1,21 +1,16 @@
 <?php
 
-    $con = mysqli_connect("localhost", "root", "", "dbpw3");
+    // Criando conexão com o banco de dados 
+    $con = mysqli_connect("localhost", "root", "", "dbpw");
 
-    if(mysqli_connect_errno()){
-        echo "Falha ao conectar com o MySQL " . mysqli_connect_error();
+    $sql = "CREATE TABLE Pessoa(nome CHAR(30), sobrenome CHAR(30), idade INT)";
+
+    if(mysqli_query($con, $sql)){
+        echo "Tabela criada com sucesso";
     } else {
-        $sql = "SELECT nome, sobrenome FROM tbpessoa";
-
-        $resultado = mysqli_query($con, $sql);
-    
-        echo "<h2>Pessoas</h2>";
-    
-        while($pessoa = mysqli_fetch_array($resultado)){
-            echo $pessoa['nome'] . " " . $pessoa['sobrenome'] . "<br/>";
-        }
-
-        mysqli_close($con);
+        echo "Erro: " . mysqli_error($con);
     }
+
+    mysqli_close($con);
 
 ?>
