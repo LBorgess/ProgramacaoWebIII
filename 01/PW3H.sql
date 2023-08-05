@@ -1,8 +1,8 @@
 -- Arquivo de teste
 
-DROP DATABASE IF EXISTS dbpw3;
-CREATE DATABASE IF NOT EXISTS dbpw3;
-USE dbpw3;
+DROP DATABASE IF EXISTS dbpw;
+CREATE DATABASE IF NOT EXISTS dbpw;
+USE dbpw;
 
 CREATE TABLE tbPessoa(
     nome CHAR(30),
