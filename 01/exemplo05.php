@@ -1,18 +1,16 @@
 <?php
+    // Exemplo apagando banco de dados
 
-    $con = mysqli_connect("localhost", "root", "", "dbpw3");
+    $con = mysqli_connect("localhost", "root");
 
-    if(mysqli_connect_errno()){
-        echo "Falha ao conectar com o MySQL " . mysqli_connect_error();
+    $sql = "DROP DATABASE dbpw";
+
+    if(mysqli_query($con, $sql)){
+        echo "Base de dados removida com sucesso.";
+    } else {
+        echo "Erro: " . mysqli_error($con);
     }
 
-    echo "Dados inseridos </br>";
-
-    $sql1 = "INSERT INTO tbpessoa VALUES('Ana', 'Souza', 30)";
-    mysqli_query($con, $sql1);
-
-    $sql2 = "INSERT INTO tbpessoa(nome, sobrenome, idade) VALUES('Carlos', 'Costa', 21)";
-    mysqli_query($con, $sql2);
-
     mysqli_close($con);
+    
 ?>
