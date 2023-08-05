@@ -1,24 +1,19 @@
 <?php
-
-    // Criando uma conexão com o banco de dados
-    // $con = mysqli_connect("localhost", "etec", "123456", "db_exemplo");
     $con = mysqli_connect("localhost", "root");
 
     if(mysqli_connect_errno()){
-        echo "Erro ao conectar com  base de dados: " . mysqli_connect_error();
+        echo "<br/>Erro ao conectar com a base de dados: " . mysqli_connect_error();
     } else {
-        
-        // CRIANDO TABELA/BANCO DE DADOS
+        // Criando o banco de dados
 
-        $sql = "CREATE DATABASE db_PW3";
+        $sql = "CREATE DATABASE dbpw";
 
         if(mysqli_query($con, $sql)){
-            echo "Banco de dados criado com sucesso.";
+            echo "<br/> Banco de dados criado com sucesso.";
         } else {
-            echo "Erro: " . mysqli_error($con);
+            echo "<br/>Erro: " . mysqli_error($con);
         }
 
         mysqli_close($con);
     }
-
 ?>
