@@ -6,7 +6,7 @@ class Contas
     var $numConta;
     var $nome;
     var $saldo;
-
+    
     /**
      * Exibe dados da conta
      * @return void

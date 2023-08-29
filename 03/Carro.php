@@ -6,14 +6,17 @@ class Carro
     var $ano;
     var $numeroPortas;
     var $peso;
+    var $velocidade = 0;
+    
 
     /**
-     * Acelera o carro
+     * Acelera o carro em uma velocidade
      * @return void
      */
     function acelerar()
-    {
-        echo 'Vrummmm <br/>';
+    {   
+        $this->velocidade = 1;
+        echo 'Velocidade atual do Carro: ' . $this->velocidade++ . '<br/>';
     }
 
     /**
@@ -22,6 +25,6 @@ class Carro
      */
     function informarCor()
     {
-        echo 'Cor do carro ' . $this->cor . '<br/>';
+        echo 'Cor do carro'  . $this->cor . '<br/>';
     }
 }

@@ -26,7 +26,9 @@ echo 'CARRO<br/>';
 $carro = new Carro();
 
 $carro->acelerar();
+$carro->velocidade = 2;
 $carro->cor = "Azul";
+$carro->acelerar();
 $carro->informarCor();
 
 echo '<hr/>';
