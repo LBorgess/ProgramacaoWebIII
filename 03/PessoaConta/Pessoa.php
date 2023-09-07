@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Classe responsável por detalhes da Pessoa
+ */
 class Pessoa
 {
     var $codigo;
@@ -57,5 +60,10 @@ class Pessoa
         $this->nascimento   = $nascimento;
         $this->escolaridade = $escolaridade;
         $this->salario      = $salario;
+    }
+
+    function __destruct()
+    {
+        echo "<br/>Objeto {$this->nome} finalizado... <br/>";
     }
 }
