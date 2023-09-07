@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Definições da classe da conta
+ */
 class Conta
 {
 
@@ -45,5 +48,25 @@ class Conta
     function obterSaldo()
     {
         return $this->saldo;
+    }
+
+    /**
+     * Método construtor da classe
+     */
+    function __construct($agencia, $codigo, $datadecriacao, $titular, $senha, $saldo)
+    {
+        $this->agencia = $agencia;
+        $this->codigo = $codigo;
+        $this->datadecriacao = $datadecriacao;
+        $this->titular = $titular;
+        $this->senha = $senha;
+
+        $this->depositar($saldo);
+        $this->cancelada = false;
+    }
+
+    function __destruct()
+    {
+        echo "<br/>Objeto Conta {$this->codigo} de {$this->titular->nome} finalizado... <br/>";
     }
 }
