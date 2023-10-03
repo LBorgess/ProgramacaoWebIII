@@ -9,12 +9,19 @@
 </head>
 
 <body>
-    <form action="exibe_funcionario.php" method="GET">
+    <form action="exibe_funcionario.php" method="POST">
 
-        <input type="number" name="codigo" id="codigo" placeholder="Código"> <br>
-        <input type="text" name="nome" id="nome" placeholder="Nome"> <br>
-        <input type="date" name="nascimento" id="nascimento" placeholder="Data de nascimento"> <br>
-        <input type="number" name="salario" id="salario" placeholder="Salário"> <br>
+        <label for="codigo">Codigo: </label>
+        <input type="number" name="codigo" id="codigo" autocomplete="off"> <br>
+
+        <label for="nome">Nome completo: </label>
+        <input type="text" name="nome" id="nome" autocomplete="off"> <br>
+
+        <label for="nascimento">Data de nascimento: </label>
+        <input type="date" name="nascimento" id="nascimento" autocomplete="off"> <br>
+
+        <label for="salario">Salário: </label>
+        <input type="number" name="salario" id="salario" autocomplete="off"> <br>
 
         <button type="submit">Enviar</button>
     </form>

@@ -5,10 +5,10 @@ include_once 'Funcionario.php';
 
 $fun = new Funcionario();
 
-$fun->setCodigo($_GET['codigo']);
-$fun->setNome($_GET['nome']);
-$fun->setNascimento($_GET['nascimento']);
-$fun->setSalario($_GET['salario']);
+$fun->setCodigo($_POST['codigo']);
+$fun->setNome($_POST['nome']);
+$fun->setNascimento($_POST['nascimento']);
+$fun->setSalario($_POST['salario']);
 
 echo "Dados do Funcionário";
 echo "<hr>";
