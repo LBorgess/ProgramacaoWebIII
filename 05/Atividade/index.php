@@ -1,8 +1,13 @@
 <?php include 'includes/header.php'; ?>
 
+
+
 <div class="container">
+    <div class="jumbotron">
+        Cálculo de gorjeta
+    </div>
     <div class="col">
-        <h3 class="center">Cálculo de gorjeta</h3>
+        <h3 class="center"></h3>
         <form action="" method="post">
             <div class="">
                 <label for="valor">Valor da conta:</label>
