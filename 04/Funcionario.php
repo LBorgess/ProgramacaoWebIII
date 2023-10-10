@@ -5,7 +5,7 @@ class Funcionario
     private   $codigo;
     private   $nome;
     private   $nascimento;
-    private   $salario;
+    protected   $salario;
 
     function setCodigo($codigo)
     {
