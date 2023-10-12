@@ -9,27 +9,32 @@ $gorjeta = new Gorjeta();
 $resultado = 0;
 $total = 0;
 
-$gorjeta->setValor($_POST['valor']);
-$gorjeta->setQualidade($_POST['qualidade']);
+if(isset($_POST['valor'], $_POST['qualidade'])){
+    $gorjeta->setValor($_POST['valor']);
+    $gorjeta->setQualidade($_POST['qualidade']);
 
-switch ($_POST['qualidade']) {
-    case 1:
-        $resultado = $gorjeta->excelente();
-        break;
-    case 2:
-        $resultado = $gorjeta->otimo();
-        break;
-    case 3:
-        $resultado = $gorjeta->bom();
-        break;
-    case 4:
-        $resultado = $gorjeta->ruim();
-        break;
-}
+    switch ($_POST['qualidade']) {
+        case 1:
+            $total = $gorjeta->excelente();
+            $resultado = $total - $_POST['valor'];
+            break;
+        case 2:
+            $total = $gorjeta->otimo();
+            $resultado = $total - $_POST['valor'];
+            break;
+        case 3:
+            $total = $gorjeta->bom();
+            $resultado = $total - $_POST['valor'];
+            break;
+        case 4:
+            $total = $gorjeta->ruim();
+            $resultado = $total - $_POST['valor'];
+            break;
+    }
+} 
 
-echo $resultado;
-
-print_r($_POST);
+$total = number_format($total, 2, ',', '.');
+$resultado = number_format($resultado, 2, ',', '.');
 
 ?>
 
@@ -40,7 +45,7 @@ print_r($_POST);
     <form method="POST">
         <div class="form-group">
             <label for="valor">Valor da conta:</label>
-            <input class="form-control" type="number" name="valor" id="valor" autocomplete="off" require>
+            <input class="form-control" type="number" name="valor" id="valor" step="0.01" autocomplete="off" require>
         </div>
 
         <div class="form-group">
@@ -60,8 +65,10 @@ print_r($_POST);
 
     <!-- Campos sem edição -->
 
-    <input type="text" class="form-control mb-2" placeholder="PHP" readonly>
-    <input type="text" class="form-control" placeholder="PHP" readonly>
+    <label>Valor da gorjeta</label>
+    <input type="text" class="form-control mb-2" placeholder="<?=$resultado?>" readonly>
+    <label>Total conta</label>
+    <input type="text" class="form-control" placeholder="<?=$total?>" readonly>
 
 </div>
 
