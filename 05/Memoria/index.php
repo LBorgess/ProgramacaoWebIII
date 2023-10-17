@@ -7,10 +7,33 @@
 
     <!-- Apenas um teste -->
 
-    <div class="card">
-        <img src="./img/favicon" alt="controle" class="card-img-top">        
+    <div class="card-group">
+
+        <div class="card bg-dark border-secondary" style="width: 10rem">
+            <a href="">
+                <img src="./img/Ball.svg" alt="controle" class="card-img-top">
+            </a>
+        </div>
+
+        <div class="card bg-dark border-secondary" style="width: 10rem">
+            <a href="">
+                <img src="./img/Ball.svg" alt="controle" class="card-img-top">
+            </a>
+        </div>
+
+        <div class="card bg-dark border-secondary" style="width: 10rem">
+            <a href="">
+                <img src="./img/Ball.svg" alt="controle" class="card-img-top">
+            </a>
+        </div>
+
+        <div class="card bg-dark border-secondary" style="width: 10rem">
+            <a href="">
+                <img src="./img/Ball.svg" alt="controle" class="card-img-top">
+            </a>
+        </div>
+
     </div>
-    
 </div>
 
 <?php include 'includes/footer.php'; ?>
