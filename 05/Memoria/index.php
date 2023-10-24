@@ -10,7 +10,7 @@ $jogo->setPontuacao(2);
 
 <div class="container">
     <div class="jumbotron border-bottom border-dark mt-1">
-        <h3 class="text-center">Jogo da Memória</h3>
+        <h3 class="text-center font-weight-bold shadow-lg">Jogo da Memória</h3>
     </div>
 
     <!-- Local de exibixão das cartas -->
@@ -25,11 +25,11 @@ $jogo->setPontuacao(2);
 
     </div>
 
-    <div class="container">
-        <p>Pontuação: <?= $jogo->getPontuacao() ?></p>
-        <p>Total erros: <?= $jogo->getQtdErros() ?></p>
+    <div class="container text-center">
+        <p class="font-weight-bold">Pontuação: <?= $jogo->getPontuacao() ?></p>
+        <p class="font-weight-bold">Total erros: <?= $jogo->getQtdErros() ?></p>
         <form action="index.php" method="post">
-            <button type="submit" name="erro" value="" id="erro">Contar</button>
+            <button class="font-weight-bold shadow-lg" type="submit" name="erro" value="" id="erro">Contar</button>
         </form>
     </div>
 
