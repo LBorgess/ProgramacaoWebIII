@@ -47,4 +47,25 @@ class Memoria
         return $this->qtdErros;
     }
 
+    /**
+     * Função para exibir os cards
+     * @return void
+     */
+    function listCard()
+    {
+    }
+
+    /**
+     * Número das cartas
+     * @return void
+     */
+    function cards()
+    {
+        $cards = [
+            '003', '006', '009', '012',
+            '025', '031', '034', '065',
+            '083', '101', '143', '144',
+            '150', '160', '164', '245'
+        ];
+    }
 }

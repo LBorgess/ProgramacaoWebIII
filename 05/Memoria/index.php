@@ -3,8 +3,11 @@
 
 $jogo = new Memoria();
 
-$jogo->setQtdErros($_POST['erro']);
-$jogo->setPontuacao(2);
+// $jogo->setQtdErros($_POST['erro']);
+// $jogo->setPontuacao(2);
+
+$cartas = $jogo->cards();
+shuffle($cartas);
 
 ?>
 
@@ -17,11 +20,11 @@ $jogo->setPontuacao(2);
 
     <div class="card-group">
 
-        <!-- <div class="card bg-dark border-secondary" style="width: 10rem">
+        <div class="card bg-dark border-secondary" style="width: 10px;">
             <a href="">
-                <img src="./img/Ball.svg" alt="controle" class="card-img-top">
+                <img src="img/<?= $cartas[0] ?>.png" class="card-img-top">
             </a>
-        </div> -->
+        </div>
 
     </div>
 
