@@ -1,13 +1,9 @@
 <?php include 'includes/header.php'; ?>
-<?php include 'includes/Memoria.php';
 
-$jogo = new Memoria();
+<?php require 'includes/Memoria.php';
 
-// $jogo->setQtdErros($_POST['erro']);
-// $jogo->setPontuacao(2);
-
-$cartas = $jogo->cards();
-shuffle($cartas);
+$memoria = new Memoria();
+$caixa = $memoria->getCaixas();
 
 ?>
 
@@ -18,24 +14,38 @@ shuffle($cartas);
 
     <!-- Local de exibixão das cartas -->
 
-    <div class="card-group">
-
-        <div class="card bg-dark border-secondary" style="width: 10px;">
-            <a href="">
-                <img src="img/<?= $cartas[0] ?>.png" class="card-img-top">
-            </a>
-        </div>
-
+    <?php
+    if (!empty($totalBoxes)) {
+        $cols = $box->getCols();
+        $rows = $box->getRows();
+        echo '<div id="memoria">';
+        echo '<a id="sair" href=".">Exit Game</a>';
+        echo '<p id="timer"><span id="minutes">0</span> Minutes, <span id="seconds">0</span> Seconds</p>';
+        for ($r = 0; $r < $rows; $r++) {
+            echo '<ul>';
+            for ($c = 0; $c < $cols; $c++) {
+                $i = $r * $cols + $c;
+                if (isset($totalBoxes[$i])) {
+                    echo '<li><div id="' . $i . '" onclick="showImage(this);"></div></li>';
+                }
+            }
+            echo '</ul>';
+        }
+        echo '</div>';
+    } else {
+        echo '<form id="memoria" method="POST">'
+                . '<div class="form-control">'
+                    . '<label for="boxesRequest">Por favor informe o número de cartas:</label>'
+                    . '<input class="form-control" type="text" id="boxesRequest" name="boxesRequest required" value="" />'
+                    . '<input class="btn mt-3" type="submit" value="Start the Game"/>'
+                .'</div>'
+            . '</form>';
+    }
+    ?>
+    <div id="sucesso">
+        Parabéns, você resolveu em <span id="sucessoMinutos">0</span> Minutos, <span id="sucessoSegundos">0</span> Segundos
+        <p><a class="btn" href="index.php">Reiniciar jogo</a></p>
     </div>
-
-    <div class="container text-center">
-        <p class="font-weight-bold">Pontuação: <?= $jogo->getPontuacao() ?></p>
-        <p class="font-weight-bold">Total erros: <?= $jogo->getQtdErros() ?></p>
-        <form action="index.php" method="post">
-            <button class="font-weight-bold shadow-lg" type="submit" name="erro" value="" id="erro">Contar</button>
-        </form>
-    </div>
-
 </div>
 
 <?php include 'includes/footer.php'; ?>

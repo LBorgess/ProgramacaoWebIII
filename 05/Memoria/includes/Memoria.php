@@ -9,63 +9,56 @@
 
 class Memoria
 {
-    /**
-     * Váriavel de controle da pontuação
-     * @var integer
-     */
-    private $pontuacao = 0;
+    private static $maxNumeroDeImages = 36;
+    private static $totalCaixas = array();
+    private static $totalCaixasCodificada = array();
+    private static $mostrarCaixa = null;
+    private static $colunas = null;
+    private static $linhas = null;
 
-    /**
-     * Várivel que adicionar um ponto na pontuação
-     * @var integer
-     */
-    private $ponto;
-
-    /**
-     * Várivel que contabiliza a quantidade de erros
-     * @var integer
-     */
-    private $qtdErros = 0;
-
-    function setPontuacao($pontuacao)
+    public function __construct()
     {
-        $this->pontuacao = $pontuacao;
+        if (isset($_POST['caixasRequest']) && is_numeric($_POST['caixasRequest']) && $_POST['caixasRequest'] > 1) {
+            self::$mostrarCaixa = min(self::$maxNumeroDeImages, (intval($_POST['caixasRequest'])));
+            self::$colunas = ceil(sqrt(self::$mostrarCaixa));
+            self::$linhas - ceil(self::$mostrarCaixa / self::$colunas);
+        }
     }
 
-    function getPontuacao()
+    public static function getCaixas()
     {
-        return $this->pontuacao;
+        if (self::$mostrarCaixa) {
+            while (count(self::$totalCaixas) > floor(self::$mostrarCaixa / 2)) {
+                $rand = rand(1, self::$maxNumeroDeImages);
+                if (!in_array($rand, self::$totalCaixas)) {
+                    array_push(self::$totalCaixas, $rand);
+                }
+            }
+
+            self::$totalCaixas = array_merge(self::$totalCaixas, self::$totalCaixas);
+            shuffle(self::$totalCaixas);
+        }
+        self::setCodificaValores();
+
+        return self::$totalCaixas;
     }
 
-    function setQtdErros($qtdErros)
+    public static function getColunas()
     {
-        $this->qtdErros = $qtdErros;
+        return self::$colunas;
     }
 
-    function getQtdErros()
+    public static function getLinhas()
     {
-        return $this->qtdErros;
+        return self::$linhas;
     }
 
-    /**
-     * Função para exibir os cards
-     * @return void
-     */
-    function listCard()
+    public static function setCodificaValores()
     {
-    }
+        foreach (self::$totalCaixas as $valores) {
+            array_push(self::$totalCaixasCodificada, base64_encode($valores + 250));
+        }
 
-    /**
-     * Número das cartas
-     * @return void
-     */
-    function cards()
-    {
-        $cards = [
-            '003', '006', '009', '012',
-            '025', '031', '034', '065',
-            '083', '101', '143', '144',
-            '150', '160', '164', '245'
-        ];
+        setcookie("totalCaixasCodificada", json_encode(self::$totalCaixasCodificada), time() + (86400 * 30), "/");
     }
 }
